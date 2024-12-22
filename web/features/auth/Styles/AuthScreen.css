@@ -1,0 +1,25 @@
+.auth-screen {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #5c3b58; /* Background color */
+}
+
+.auth-card {
+  height: auto;
+  width: 100%;
+  max-width: 420px; /* Limit width for larger screens */
+  box-sizing: border-box;
+}
+
+.sign-in-card {
+  width: 100%;
+  height: 100%;
+  padding: 2rem; /* Equivalent to p-8 in Tailwind */
+}
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem; /* Adjust the gap size as needed */
+}
