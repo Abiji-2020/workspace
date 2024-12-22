@@ -1,15 +1,17 @@
 import type { Config } from "tailwindcss";
+const colors = require('tailwindcss/colors')
 
 export default {
     darkMode: ["class"],
     content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx,html,js}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx,html,js}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx,html,js}",
   ],
   theme: {
   	extend: {
   		colors: {
+			...colors,
   			background: 'hsl(var(--background))',
   			foreground: 'hsl(var(--foreground))',
   			card: {
