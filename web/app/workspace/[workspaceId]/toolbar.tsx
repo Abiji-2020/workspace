@@ -1,6 +1,7 @@
 import { useGetWorkspace } from "app/features/workspaces/api/use-get-workspace";
 import { Button } from "components/ui/button";
 import { Info, Search } from "lucide-react";
+import { use } from "react"; // Import use to unwrap params
 
 interface WorkspaceIdPageProps {
   params: {
@@ -9,7 +10,9 @@ interface WorkspaceIdPageProps {
 }
 
 export const Toolbar = ({ params }: WorkspaceIdPageProps) => {
-  const { workspace, isLoading } = useGetWorkspace(params.workspaceId); // Use the workspaceId from params
+  const { workspaceId } = use(params);  // Unwrap params using React.use()
+  
+  const { workspace, isLoading } = useGetWorkspace(workspaceId); // Use the unwrapped workspaceId
 
   return (
     <div className="bg-[#481349] flex items-center justify-between h-10 p-1.5">
