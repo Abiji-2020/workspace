@@ -1,7 +1,8 @@
+import '@testing-library/jest-dom'; // Importing jest-dom
 import { render, screen, fireEvent } from '@testing-library/react';
-import { SignUpCard } from '../sign-up-card';
-import { useRouter } from 'next/router';
+import { SignUpCard } from '../app/features/auth/components/sign-up-card';
 import { describe, expect, test, vi } from 'vitest';
+import React from 'react';
 
 // Mock the useRouter hook from next/router
 vi.mock('next/router', () => ({

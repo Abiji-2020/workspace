@@ -1,11 +1,9 @@
-import { defineConfig } from 'vite';
-import VitePluginReact from '@vitejs/plugin-react';
+import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
-  plugins: [VitePluginReact()],
   test: {
-    globals: true, // Makes expect available globally
+    globals: true,
     environment: 'jsdom',
-    setupFiles: ['./vitest.setup.js'], // Optional setup file
-  },
+    setupFiles: './setupTests.js',
+  }  
 });

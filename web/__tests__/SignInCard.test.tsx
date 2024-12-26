@@ -1,11 +1,10 @@
-import '@testing-library/jest-dom';  // Extends expect with custom matchers
-import { describe, expect, it, vi } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
-import { SignInCard } from '../sign-in-card';
+import '@testing-library/jest-dom';
 import React from 'react';
+import { SignInCard } from '../app/features/auth/components/sign-in-card';
 
 describe("SignInCard Component", () => {
-  
   it("renders login title and inputs", () => {
     render(<SignInCard setState={vi.fn()} />);
     expect(screen.getByText(/Login to continue/i)).toBeInTheDocument();

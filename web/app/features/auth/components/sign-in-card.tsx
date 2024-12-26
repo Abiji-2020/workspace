@@ -7,6 +7,7 @@ import { SignInFlow } from "../types";
 import usersData from "../../../../data/users.json"; // Import the JSON file
 import { TriangleAlert } from "lucide-react";
 import { setCookie } from "cookies-next"; // Add cookies-next for setting cookies
+import React from "react";
 
 type Users = Record<string, { password: string, uid: string }>; // Users data now includes uid
 const users = usersData as Users;
