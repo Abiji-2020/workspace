@@ -2,7 +2,7 @@ import { describe, it, expect, vi } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import React from 'react';
-import { SignInCard } from '../app/features/auth/components/sign-in-card';
+import { SignInCard } from '../features/auth/components/sign-in-card';
 
 describe("SignInCard Component", () => {
   it("renders login title and inputs", () => {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCurrentUser } from "app/features/auth/api/use-current-user";
+import { useCurrentUser } from "../api/use-current-user";
 import {
   Avatar,
   AvatarFallback,
@@ -14,6 +14,7 @@ import {
 } from "../../../../components/ui/dropdown-menu";
 import { Loader, LogOut } from "lucide-react";
 import { deleteCookie } from "cookies-next"; // Use deleteCookie instead of removeCookie
+import React from "react";
 
 export const UserButton = () => {
   const { currentUser, isLoading } = useCurrentUser();

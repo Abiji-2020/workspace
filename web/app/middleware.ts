@@ -1,16 +1,14 @@
 import { NextResponse, NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
-  const token = request.cookies.get('authToken'); // Check if token exists
+  const token = request.cookies.get('authToken');
+  const { pathname, url } = request.nextUrl;
 
-  // Allow access to workspace pages without a token
-  if (!token && !request.nextUrl.pathname.startsWith('/auth') && !request.nextUrl.pathname.startsWith('/workspace')) {
-    return NextResponse.redirect(new URL('/auth', request.url));
+  // If no token and the path is not /auth or /workspace, redirect to /auth
+  if (!token && !pathname.startsWith('/auth') && !pathname.startsWith('/workspace')) {
+    const redirectUrl = new URL('/auth', url);  // Construct the full URL for redirect
+    return NextResponse.redirect(redirectUrl);
   }
 
   return NextResponse.next();
 }
-
-export const config = {
-  matcher: ['/((?!_next|static|favicon.ico).*)'], // Applies to all pages except static and _next paths
-};

@@ -1,11 +1,10 @@
-import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Modals } from "./features/modals/modals";
-import { Toaster } from "components/ui/sonner";
-
+import { Toaster } from "../components/ui/sonner";
+import { Metadata } from "next";
+import React from "react";
 const geistSans = Geist({
-  variable: "--font-geist-sans",
+  variable: "--font-geist-sans", // Additional options can be passed like this
   subsets: ["latin"],
 });
 
@@ -29,8 +28,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Toaster/>
-        <Modals/>
+        <Toaster />
         {children}
       </body>
     </html>
