@@ -1,0 +1,26 @@
+basePath: /v1/api
+host: localhost:8080
+info:
+  contact: {}
+  description: This is the API documentation for NexOrb.
+  title: NexOrb API
+  version: "1.0"
+paths:
+  /health:
+    get:
+      consumes:
+      - application/json
+      description: Check health of the application
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Status of the application
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Check health of the application
+      tags:
+      - health
+swagger: "2.0"
