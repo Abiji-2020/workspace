@@ -1,13 +1,13 @@
 package signin
 
 import (
+	"fmt"
 	"github.com/Abiji-2020/NexOrb/database"
 	"github.com/Abiji-2020/NexOrb/logger"
 	"github.com/Abiji-2020/NexOrb/pkg/models"
 	"github.com/Abiji-2020/NexOrb/pkg/utils"
 	"github.com/gin-gonic/gin"
 	"net/http"
-	"fmt"
 )
 
 // SignIn signs in a user
