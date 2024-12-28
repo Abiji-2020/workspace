@@ -7,6 +7,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strings"
+	"fmt"
 )
 
 // AuthMiddleware checks if the user is authenticated, except for the sign-in, sign-up, and health routes.
@@ -32,6 +33,14 @@ func AuthMiddleware(log *logger.Logger, db *database.Database) gin.HandlerFunc {
 }
 
 func validateToken(token string, log *logger.Logger, db *database.Database) error {
-	err, _ := utils.ValidateAPIKey(log, db, token)
-	return err
+	err, apiKey := utils.ValidateAPIKey(log, db, token)
+	if err != nil {
+		log.LogError("Error validating the API Key")
+		return err 
+	}
+	if apiKey == "" || len(apiKey) == 0 {
+		log.LogError("API Key is empty")
+		return fmt.Errorf("API Key is empty")
+	}
+	return nil
 }

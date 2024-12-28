@@ -30,7 +30,7 @@ func NewConfig() *AppConfig {
 		Router:     router,
 		Logger:     log,
 		ServerPort: "8080",
-		Database:   database.InitDatabase(log),
+		Database:   db,
 	}
 }
 
