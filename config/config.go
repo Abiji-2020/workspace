@@ -33,3 +33,7 @@ func NewConfig() *AppConfig {
 		Database:   database.InitDatabase(log),
 	}
 }
+
+func (c *AppConfig) GetConfig() *AppConfig {
+	return c
+}

@@ -34,6 +34,151 @@
                     }
                 }
             }
+        },
+        "/signup": {
+            "post": {
+                "description": "Create a new user along with creating an orgnaization or joining an exisiting organization",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "signup"
+                ],
+                "summary": "Creating  a new user",
+                "parameters": [
+                    {
+                        "description": "Signup Request Payload",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/signup.SignupRequest"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User created successfully",
+                        "schema": {
+                            "$ref": "#/definitions/signup.SignupResponse"
+                        }
+                    },
+                    "400": {
+                        "description": "Error message",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "type": "object",
+                            "additionalProperties": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "signup.SignupRequest": {
+            "type": "object",
+            "properties": {
+                "avatar_image": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    }
+                },
+                "date_of_birth": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "first_name": {
+                    "type": "string"
+                },
+                "last_name": {
+                    "type": "string"
+                },
+                "organization_country": {
+                    "type": "string"
+                },
+                "organization_id": {
+                    "type": "string"
+                },
+                "organization_name": {
+                    "type": "string"
+                },
+                "organization_url": {
+                    "type": "string"
+                },
+                "password": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "string"
+                }
+            }
+        },
+        "signup.SignupResponse": {
+            "type": "object",
+            "properties": {
+                "apikey": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string"
+                },
+                "date_of_birth": {
+                    "type": "string"
+                },
+                "email": {
+                    "type": "string"
+                },
+                "first_name": {
+                    "type": "string"
+                },
+                "id": {
+                    "type": "string"
+                },
+                "last_name": {
+                    "type": "string"
+                },
+                "organization_country": {
+                    "type": "string"
+                },
+                "organization_name": {
+                    "type": "string"
+                },
+                "organization_url": {
+                    "type": "string"
+                },
+                "role": {
+                    "type": "string"
+                },
+                "updated_at": {
+                    "type": "string"
+                }
+            }
         }
     }
 }

@@ -1,6 +1,9 @@
 package middleware
 
 import (
+	"github.com/Abiji-2020/NexOrb/database"
+	"github.com/Abiji-2020/NexOrb/logger"
+	"github.com/Abiji-2020/NexOrb/pkg/utils"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strings"
@@ -8,7 +11,7 @@ import (
 
 // AuthMiddleware checks if the user is authenticated, except for the sign-in, sign-up, and health routes.
 
-func AuthMiddleware() gin.HandlerFunc {
+func AuthMiddleware(log *logger.Logger, db *database.Database) gin.HandlerFunc {
 	return func(c *gin.Context) {
 		exemptRoutes := []string{"/v1/api/signin", "/v1/api/signup", "/v1/api/health"}
 		requestPath := c.Request.URL.Path
@@ -19,7 +22,7 @@ func AuthMiddleware() gin.HandlerFunc {
 			}
 		}
 		token := c.GetHeader("Authorization")
-		if err := validateToken(token); err != nil {
+		if err := validateToken(token, log, db); err != nil {
 			c.JSON(http.StatusUnauthorized, gin.H{"error": "Unauthorized"})
 			c.Abort()
 			return
@@ -28,5 +31,7 @@ func AuthMiddleware() gin.HandlerFunc {
 	}
 }
 
-func validateToken(token string) error {
+func validateToken(token string, log *logger.Logger, db *database.Database) error {
+	err, _ := utils.ValidateAPIKey(log, db, token)
+	return err
 }

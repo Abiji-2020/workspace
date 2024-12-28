@@ -5,11 +5,11 @@ import (
 )
 
 type Organizations struct {
-	ID        uint      `gorm:"primaryKey"`
-	Name      string    `gorm:"not null"`
-	URL       string    `gorm:"not null"`
-	Country   string    `gorm:"not null"`
-	Users     []Users   `gorm:"foreignKey:OrganizationID"`
-	CreatedAt time.Time `gorm:"autoCreateTime"`
-	UpdatedAt time.Time `gorm:"autoUpdateTime"`
+	ID        string    `gorm:"primaryKey"`                // Primary key as string
+	Name      string    `gorm:"not null"`                  // Organization name
+	URL       string    `gorm:"not null"`                  // Organization URL
+	Country   string    `gorm:"not null"`                  // Organization country
+	Users     []Users   `gorm:"foreignKey:OrganizationID"` // Foreign key to Users
+	CreatedAt time.Time `gorm:"autoCreateTime"`            // Auto create time for organization
+	UpdatedAt time.Time `gorm:"autoUpdateTime"`            // Auto update time for organization
 }

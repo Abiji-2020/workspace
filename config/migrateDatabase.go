@@ -6,7 +6,7 @@ import (
 
 // MigrateDatabase migrates the database schema
 func (c *AppConfig) MigrateDatabase() error {
-	err := c.Database.Instance.AutoMigrate(&models.Users{}, &models.Organizations{})
+	err := c.Database.Instance.AutoMigrate(&models.Users{}, &models.Organizations{}, &models.ApiKeys{})
 	if err != nil {
 		return err
 	}
