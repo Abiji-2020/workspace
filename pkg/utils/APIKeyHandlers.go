@@ -16,9 +16,10 @@ func GenerateAPIKey() string {
 func CreateAPIKey(log *logger.Logger, db *database.Database, userID string) (error, string) {
 	apiKey := GenerateAPIKey()
 	apiKeyObj := models.ApiKeys{
-		ID:     apiKey,
+		ID:     uuid.New().String(),
 		UserID: userID,
 		Active: true,
+		ApiKey: apiKey,
 	}
 	err := db.Instance.Create(&apiKeyObj).Error
 	if err != nil {

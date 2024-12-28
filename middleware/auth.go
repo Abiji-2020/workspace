@@ -1,13 +1,13 @@
 package middleware
 
 import (
+	"fmt"
 	"github.com/Abiji-2020/NexOrb/database"
 	"github.com/Abiji-2020/NexOrb/logger"
 	"github.com/Abiji-2020/NexOrb/pkg/utils"
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"strings"
-	"fmt"
 )
 
 // AuthMiddleware checks if the user is authenticated, except for the sign-in, sign-up, and health routes.
@@ -36,7 +36,7 @@ func validateToken(token string, log *logger.Logger, db *database.Database) erro
 	err, apiKey := utils.ValidateAPIKey(log, db, token)
 	if err != nil {
 		log.LogError("Error validating the API Key")
-		return err 
+		return err
 	}
 	if apiKey == "" || len(apiKey) == 0 {
 		log.LogError("API Key is empty")
