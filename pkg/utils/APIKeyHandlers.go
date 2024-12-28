@@ -32,7 +32,7 @@ func CreateAPIKey(log *logger.Logger, db *database.Database, userID string) (err
 
 func ValidateAPIKey(log *logger.Logger, db *database.Database, apiKey string) (error, string) {
 	var apiKeyObj models.ApiKeys
-	err := db.Instance.Where("id = ?", apiKey).First(&apiKeyObj).Error
+	err := db.Instance.Where("api_key = ?", apiKey).First(&apiKeyObj).Error
 	if err != nil {
 		log.LogError(fmt.Sprintf("Error fetching the API Key: %v", err))
 		return err, ""
