@@ -5,11 +5,11 @@ import {
   DropdownMenuTrigger,
   DropdownMenuGroup,
 } from "../../../components/ui/dropdown-menu";
-import { Button } from "components/ui/button";
+import { Button } from "../../../components/ui/button";
 import { useParams } from "next/navigation"; // For Next.js dynamic routing
-import { useGetWorkspace } from "app/features/workspaces/api/use-get-workspace";
-import { useGetWorkspaces } from "app/features/workspaces/api/use-get-workspaces";
-import { useCreateWorkspaceModel } from "app/features/workspaces/store/use-create-workspace-model";
+import { useGetWorkspace } from "../../features/workspaces/api/use-get-workspace";
+import { useGetWorkspaces } from "../../features/workspaces/api/use-get-workspaces";
+import { useCreateWorkspaceModel } from "../../features/workspaces/store/use-create-workspace-model";
 import { Loader, Plus } from "lucide-react";
 
 export const WorkspaceSwitcher = () => {

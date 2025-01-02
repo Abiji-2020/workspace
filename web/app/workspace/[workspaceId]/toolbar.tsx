@@ -1,5 +1,5 @@
-import { useGetWorkspace } from "app/features/workspaces/api/use-get-workspace";
-import { Button } from "components/ui/button";
+import { useGetWorkspace } from "../../features/workspaces/api/use-get-workspace";
+import { Button } from "../../../components/ui/button";
 import { Info, Search } from "lucide-react";
 import { use } from "react"; // Import use to unwrap params
 

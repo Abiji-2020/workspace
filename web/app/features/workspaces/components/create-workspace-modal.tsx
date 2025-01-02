@@ -4,8 +4,8 @@ import {
     DialogHeader,
     DialogTitle,
   } from "../../../../components/ui/dialog";
-  import { Input } from "components/ui/input";
-  import { Button } from "components/ui/button";
+  import { Input } from "../../../../components/ui/input";
+  import { Button } from "../../../../components/ui/button";
   import { useCreateWorkspaceModel } from "../store/use-create-workspace-model";
   import { useCreateWorkspace } from "../api/use-create-workspace";
   import { useState } from "react";

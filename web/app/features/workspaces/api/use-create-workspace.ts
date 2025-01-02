@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-import { useCurrentUser } from "app/features/auth/api/use-current-user";  // Importing the useCurrentUser hook
+import { useCurrentUser } from "../../../features/auth/api/use-current-user";  // Importing the useCurrentUser hook
 
 interface Workspace {
   name: string;
