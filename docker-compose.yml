@@ -1,9 +1,8 @@
-
 services:
   backend:
-    build: 
+    build:
       context: .
-      dockerfile: Dockerfile 
+      dockerfile: Dockerfile
     container_name: nexorb_backend
     ports:
       - "8080:8080"
@@ -18,7 +17,7 @@ services:
     volumes:
       - .:/app
     networks:
-      - nexorb_network 
+      - nexorb_network
 
   database:
     image: postgres
@@ -34,6 +33,19 @@ services:
       - postgres_data:/var/lib/postgresql/data
     networks:
       - nexorb_network
+  pgAdmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    depends_on:
+      - database
+    networks:
+      - nexorb_network
+
 networks:
   nexorb_network:
 
