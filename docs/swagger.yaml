@@ -1,0 +1,214 @@
+basePath: /v1/api
+definitions:
+  signin.GeneralErrorResponse:
+    properties:
+      message:
+        type: string
+      status_code:
+        type: integer
+    type: object
+  signin.SignInInvalidPasswordResponse:
+    properties:
+      email:
+        type: string
+      message:
+        type: string
+    type: object
+  signin.SignInRequest:
+    properties:
+      email:
+        type: string
+      password:
+        type: string
+    required:
+    - email
+    - password
+    type: object
+  signin.SignInResponse:
+    properties:
+      apikey:
+        type: string
+      created_at:
+        type: string
+      email:
+        type: string
+      first_name:
+        type: string
+      id:
+        type: string
+      last_name:
+        type: string
+      organization_id:
+        type: string
+      role:
+        type: string
+      updated_at:
+        type: string
+    type: object
+  signin.UserNotFoundResponse:
+    properties:
+      message:
+        type: string
+    type: object
+  signup.SignupRequest:
+    properties:
+      avatar_image:
+        items:
+          type: integer
+        type: array
+      date_of_birth:
+        type: string
+      email:
+        type: string
+      first_name:
+        type: string
+      last_name:
+        type: string
+      organization_country:
+        type: string
+      organization_id:
+        type: string
+      organization_name:
+        type: string
+      organization_url:
+        type: string
+      password:
+        type: string
+      role:
+        type: string
+    type: object
+  signup.SignupResponse:
+    properties:
+      apikey:
+        type: string
+      created_at:
+        type: string
+      date_of_birth:
+        type: string
+      email:
+        type: string
+      first_name:
+        type: string
+      id:
+        type: string
+      last_name:
+        type: string
+      organization_country:
+        type: string
+      organization_name:
+        type: string
+      organization_url:
+        type: string
+      role:
+        type: string
+      updated_at:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: This is the API documentation for NexOrb.
+  title: NexOrb API
+  version: "1.0"
+paths:
+  /health:
+    get:
+      consumes:
+      - application/json
+      description: Check health of the application
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: Status of the application
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Check health of the application
+      tags:
+      - health
+  /signin:
+    post:
+      consumes:
+      - application/json
+      description: Signs in a user
+      parameters:
+      - description: Signin Request Payload
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/signin.SignInRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: User signed in successfully
+          schema:
+            $ref: '#/definitions/signin.SignInResponse'
+        "400":
+          description: Error message
+          schema:
+            $ref: '#/definitions/signin.GeneralErrorResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/signin.GeneralErrorResponse'
+        "404":
+          description: User not found
+          schema:
+            $ref: '#/definitions/signin.UserNotFoundResponse'
+        "422":
+          description: Invalid sign in request Password
+          schema:
+            $ref: '#/definitions/signin.SignInInvalidPasswordResponse'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/signin.GeneralErrorResponse'
+      summary: Signs in a user
+      tags:
+      - signin
+  /signup:
+    post:
+      consumes:
+      - application/json
+      description: Create a new user along with creating an orgnaization or joining
+        an exisiting organization
+      parameters:
+      - description: Signup Request Payload
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/signup.SignupRequest'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: User created successfully
+          schema:
+            $ref: '#/definitions/signup.SignupResponse'
+        "400":
+          description: Error message
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties:
+              type: string
+            type: object
+      summary: Creating  a new user
+      tags:
+      - signup
+swagger: "2.0"
